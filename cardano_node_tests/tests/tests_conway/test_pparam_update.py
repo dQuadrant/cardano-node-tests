@@ -1185,16 +1185,16 @@ class TestPParamUpdate:
             governance_utils.check_vote_view(cluster_obj=cluster, vote_data=fin_voted_votes.cc[0])
         if fin_voted_votes.drep:
             governance_utils.check_vote_view(cluster_obj=cluster, vote_data=fin_voted_votes.drep[0])
-        
+
         # Check for deposit return
         deposit_amt = cluster.conway_genesis["govActionDeposit"]
         enact_deposit_returned = cluster.g_query.get_stake_addr_info(
-                pool_user_lg.stake.address
-            ).reward_account_balance
+            pool_user_lg.stake.address
+        ).reward_account_balance
         assert (
-                enact_deposit_returned == init_return_account_balance + deposit_amt * submitted_proposal_count
-            ), "Incorrect return account balance"
-        
+            enact_deposit_returned
+            == init_return_account_balance + deposit_amt * submitted_proposal_count
+        ), "Incorrect return account balance"
 
 
 class TestPParamData:
